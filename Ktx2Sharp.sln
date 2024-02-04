@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{3066C337-337C-4D49-BF26-6409E11BC838}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_items", "_items", "{ECD3152E-7741-4A40-8B45-B5BF8E7E2566}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ktx2Sharp", "Source\Ktx2Sharp.csproj", "{D3196D80-D20A-41A0-BE59-F96A91C9F2C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3196D80-D20A-41A0-BE59-F96A91C9F2C8} = {3066C337-337C-4D49-BF26-6409E11BC838}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3196D80-D20A-41A0-BE59-F96A91C9F2C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3196D80-D20A-41A0-BE59-F96A91C9F2C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3196D80-D20A-41A0-BE59-F96A91C9F2C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3196D80-D20A-41A0-BE59-F96A91C9F2C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

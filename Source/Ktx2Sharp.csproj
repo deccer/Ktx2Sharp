@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Platforms>AnyCPU;x64</Platforms>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Description>C# bindings for the ktx2 parts of https://github.com/KhronosGroup/KTX-Software</Description>
+        <PackageTags>c#; bindings; libktx2;</PackageTags>
+        <PackageProjectUrl>https://github.com/deccer/Ktx2Sharp</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/deccer/Ktx2Sharp</RepositoryUrl>
+        <Authors>deccer</Authors>
+        <Version>1.0.0</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="../Lib/win-x64/ktx.dll">
+            <PackagePath>runtimes/win-x64/native</PackagePath>
+            <Pack>true</Pack>
+            <Visible>false</Visible>
+        </Content>
+
+        <Content Include="../Lib/linux-x64/libktx.so.4.2.1">
+            <PackagePath>runtimes/linux-x64/native</PackagePath>
+            <Pack>true</Pack>
+            <Visible>false</Visible>
+        </Content>
+    </ItemGroup>
+
+</Project>
