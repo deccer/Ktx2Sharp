@@ -1,0 +1,38 @@
+name: Deploy to Nuget.org
+
+on:
+    release:
+        types: [ published ]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Get Build Version
+              run: |
+                  Import-Module .\build\GetBuildVersion.psm1
+                  Write-Host $Env:GITHUB_REF
+                  $version = GetBuildVersion -VersionString $Env:GITHUB_REF
+                  echo "BUILD_VERSION=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+              shell: pwsh
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v2.1.0
+              with:
+                  dotnet-version: '8.0.x'
+
+            - name: Setup NuGet
+              uses: NuGet/setup-nuget@v1.0.5
+
+            - name: Restore Dependencies
+              run: dotnet restore Ktx2Sharp.sln
+
+            - name: Build
+              run: dotnet pack Source/Ktx2Sharp.csproj --configuration Release -p:Version=$BUILD_VERSION --no-restore
+
+            - name: Publish
+              if: startsWith(github.ref, 'refs/tags')
+              run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET}}

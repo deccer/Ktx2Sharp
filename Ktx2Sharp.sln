@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_items", "_items", "{ECD315
 		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md
+		.github\workflows\cd.yml = .github\workflows\cd.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ktx2Sharp", "Source\Ktx2Sharp.csproj", "{D3196D80-D20A-41A0-BE59-F96A91C9F2C8}"
