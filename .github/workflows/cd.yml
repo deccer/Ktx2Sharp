@@ -41,6 +41,9 @@ jobs:
               run: dotnet restore Ktx2Sharp.sln
 
             - name: Build
+              run: dotnet build Source/Ktx2Sharp.csproj --configuration Release -p:Version=$BUILD_VERSION --no-restore
+
+            - name: Pack
               run: dotnet pack Source/Ktx2Sharp.csproj --configuration Release -p:Version=$BUILD_VERSION --no-restore
 
             - name: Publish
