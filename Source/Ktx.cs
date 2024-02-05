@@ -1,12 +1,13 @@
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Runtime.InteropServices;
 
 namespace Ktx2Sharp;
 
 public static partial class Ktx
 {
+    private const string LibraryName = "ktx";
+
     private static IntPtr _nativeLibraryHandle = IntPtr.Zero;
 
     private const string SrLibKtxNotInitialized =
@@ -14,8 +15,8 @@ public static partial class Ktx
 
     public static bool Init()
     {
-        var libraryName = GetLibraryName();
-        if (NativeLibrary.TryLoad(libraryName, out _nativeLibraryHandle))
+        var executingAssembly = typeof(Ktx).Assembly;
+        if (NativeLibrary.TryLoad(LibraryName, executingAssembly, DllImportSearchPath.AssemblyDirectory, out _nativeLibraryHandle))
         {
             return true;
         }
@@ -117,16 +118,5 @@ public static partial class Ktx
             throw new InvalidOperationException(SrLibKtxNotInitialized);
         }
         return _ktxTexture2GetImageSizeDelegate(texture, mipLevel);
-    }
-
-    private static string GetLibraryName()
-    {
-        return RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-            ? File.Exists("runtimes/win-x64/native/ktx.dll")
-                ? "runtimes/win-x64/native/ktx.dll"
-                : "ktx.dll"
-            : File.Exists("runtimes/linux-x64/native/libktx.so.4.2.1")
-                ? "runtimes/linux-x64/native/libktx.so.4.2.1"
-                : "libktx.so";
     }
 }
