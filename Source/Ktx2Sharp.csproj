@@ -23,7 +23,7 @@
         </Content>
 
         <Content Include="../Lib/linux-x64/libktx.so.4.2.1">
-            <PackagePath>runtimes/linux-x64/native</PackagePath>
+            <PackagePath>runtimes/linux-x64/native/libktx.so</PackagePath>
             <Pack>true</Pack>
             <Visible>false</Visible>
         </Content>
